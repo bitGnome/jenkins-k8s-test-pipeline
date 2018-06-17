@@ -10,7 +10,9 @@ pipeline {
         }
         stage('Build') {
             steps {
-                docker.build("first-pipeline:${env.BUILD_ID}")
+                script {
+                    app = docker.build("first-pipeline:${env.BUILD_ID}")
+                }
             }
         }
         stage('Test') {
