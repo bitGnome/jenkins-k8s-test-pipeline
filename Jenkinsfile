@@ -2,12 +2,14 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
                 echo 'Checking out SCM'
                 checkout scm
-                docker.build("first-pipeline:${env.BUILD_ID}")
             }
+        }
+        stage('Build') {
+            docker.build("first-pipeline:${env.BUILD_ID}")
         }
         stage('Test') {
             steps {
