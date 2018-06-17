@@ -1,18 +1,10 @@
 pipeline {
-    agent any
-
+    agent { dockerfile true }
     stages {
         stage('Checkout') {
             steps {
                 echo 'Checking out SCM'
                 checkout scm
-            }
-        }
-        stage('Build') {
-            steps {
-                script {
-                    app = docker.build("first-pipeline:${env.BUILD_ID}")
-                }
             }
         }
         stage('Test') {
