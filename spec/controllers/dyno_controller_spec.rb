@@ -1,7 +1,7 @@
 RSpec.describe ::DynoController do
   describe 'GET index' do
     it 'assigns @teams' do
-      get :index
+      get :index, :params => {:name => 'foosh'}
       expect(assigns(:name)).to eq 'foosh'
     end
 
