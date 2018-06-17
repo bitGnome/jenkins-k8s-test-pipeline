@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Checking out SCM'
                 checkout scm
-                app = docker.build("first-pipeline:${env.BUILD_ID}")
+                docker.build("first-pipeline:${env.BUILD_ID}")
             }
         }
         stage('Test') {
